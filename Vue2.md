@@ -66,6 +66,42 @@ Prop 是你可以在组件上注册的一些自定义 attribute 。在子组件�
 
 一个组件默认可以拥有任意数量的 prop，任何值都可以传递给任何 prop。
 
+如果是多个单词，注意这个 props 要用小写驼峰，而 attribute 则必须用 `-` 中划线写法来写。
+
+```javascript
+// 子组件 y-button.vue
+props: ['iconPosition']
+
+// 父组件
+<y-button icon-position="left"><y-button>
+```
+
+props 还可以用对象的写法来写
+
+```javascript
+// 对象写法
+props: { 
+    icon: {},
+    iconPosition: {
+      type: String,
+      // 对象写法可以为 attribute 设置默认值
+      default: 'left',
+      // 还可以写一个检验器
+      validator(value) {
+        if (value !== 'left' && value !== 'right') {
+          return false;
+        } else {
+          return true;
+        }
+    }
+  }
+  
+// 数组写法
+props: ['icon', 'iconPosition'] 
+```
+
+
+
 ### 内置组件 `<slot>` ，通过插槽分发内容
 
 ### 父实例 `vm.$parent` 和 子实例 `vm.$children`
