@@ -83,6 +83,7 @@ props 还可以用对象的写法来写
 props: { 
     icon: {},
     iconPosition: {
+      // type: [Number, String] // type 也可以这样写，支持不止一种类型
       type: String,
       // 对象写法可以为 attribute 设置默认值
       default: 'left',
